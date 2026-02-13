@@ -17,26 +17,31 @@ export function ApplicationForm({ onSubmit }: ApplicationFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // モック: 送信処理は行わず完了画面へ
     onSubmit();
   };
 
   return (
-    <section className="px-4 py-12">
-      <div className="max-w-lg mx-auto">
-        <h2 className="text-lg font-semibold text-skin-foreground mb-4 text-center">
+    <section className="px-4 py-16">
+      <div className="max-w-xl mx-auto">
+        <p className="font-serif text-xs tracking-[0.2em] text-skin-muted uppercase mb-2 text-center">
+          お申し込み
+        </p>
+        <h2 className="font-serif text-xl text-skin-foreground mb-8 text-center">
           体験会に申し込む
         </h2>
-        <Card className="border-skin-border bg-skin-card">
-          <CardHeader>
+        <Card className="border-skin-border bg-skin-card shadow-sm rounded-xl overflow-hidden">
+          <CardHeader className="px-6 pt-6 pb-2">
             <p className="text-sm text-skin-muted">
               以下の内容をご記入のうえ、送信してください。
             </p>
           </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <CardContent className="px-6 pb-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-skin-foreground">
+                <Label
+                  htmlFor="name"
+                  className="text-skin-foreground text-sm font-medium"
+                >
                   お名前
                 </Label>
                 <Input
@@ -45,12 +50,15 @@ export function ApplicationForm({ onSubmit }: ApplicationFormProps) {
                   placeholder="山田 花子"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="border-skin-border bg-background"
+                  className="border-skin-border bg-white rounded-md h-11"
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-skin-foreground">
+                <Label
+                  htmlFor="email"
+                  className="text-skin-foreground text-sm font-medium"
+                >
                   メールアドレス
                 </Label>
                 <Input
@@ -59,12 +67,15 @@ export function ApplicationForm({ onSubmit }: ApplicationFormProps) {
                   placeholder="example@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border-skin-border bg-background"
+                  className="border-skin-border bg-white rounded-md h-11"
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone" className="text-skin-foreground">
+                <Label
+                  htmlFor="phone"
+                  className="text-skin-foreground text-sm font-medium"
+                >
                   電話番号
                 </Label>
                 <Input
@@ -73,12 +84,12 @@ export function ApplicationForm({ onSubmit }: ApplicationFormProps) {
                   placeholder="090-1234-5678"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="border-skin-border bg-background"
+                  className="border-skin-border bg-white rounded-md h-11"
                 />
               </div>
               <Button
                 type="submit"
-                className="w-full bg-skin-primary hover:bg-skin-primary/90 text-skin-primary-foreground"
+                className="w-full bg-skin-brand hover:bg-skin-brand/90 text-white rounded-md py-6 text-base font-medium mt-6"
               >
                 申し込む
               </Button>

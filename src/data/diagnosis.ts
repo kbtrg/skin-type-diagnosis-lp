@@ -5,6 +5,8 @@ export interface SkinType {
   name: string;
   description: string;
   shortDescription: string;
+  /** カード用画像URL（/images/skin-types/ または外部URL） */
+  imageUrl: string;
 }
 
 export interface Choice {
@@ -18,6 +20,15 @@ export interface Question {
   choices: Choice[];
 }
 
+/** 肌タイプごとのカード用画像（差し替え可: public/images/skin-types/{id}.jpg など） */
+const SKIN_TYPE_IMAGES: Record<SkinTypeId, string> = {
+  normal: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=400&fit=crop",
+  oily: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&h=400&fit=crop",
+  dry: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&h=400&fit=crop",
+  combination: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&h=400&fit=crop",
+  sensitive: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop",
+};
+
 export const SKIN_TYPES: SkinType[] = [
   {
     id: "normal",
@@ -25,6 +36,7 @@ export const SKIN_TYPES: SkinType[] = [
     shortDescription: "バランスの取れた理想的な肌",
     description:
       "水分と油分のバランスが良く、キメが整った理想的な肌タイプです。トラブルが少なく、化粧のりも良いのが特徴です。",
+    imageUrl: SKIN_TYPE_IMAGES.normal,
   },
   {
     id: "oily",
@@ -32,6 +44,7 @@ export const SKIN_TYPES: SkinType[] = [
     shortDescription: "テカり・ベタつきが気になる肌",
     description:
       "皮脂分泌が活発で、テカりやベタつきが気になりやすいタイプ。毛穴の開きやニキビができやすい傾向があります。",
+    imageUrl: SKIN_TYPE_IMAGES.oily,
   },
   {
     id: "dry",
@@ -39,6 +52,7 @@ export const SKIN_TYPES: SkinType[] = [
     shortDescription: "カサつき・つっぱりが気になる肌",
     description:
       "水分や皮脂が不足しがちで、カサつきやつっぱりを感じやすいタイプ。小じわやくすみに注意が必要です。",
+    imageUrl: SKIN_TYPE_IMAGES.dry,
   },
   {
     id: "combination",
@@ -46,6 +60,7 @@ export const SKIN_TYPES: SkinType[] = [
     shortDescription: "Tゾーンはオイリー・Uゾーンは乾燥",
     description:
       "Tゾーンはテカり、頬や目元は乾燥する混合タイプ。部位によってケアを変えると効果的です。",
+    imageUrl: SKIN_TYPE_IMAGES.combination,
   },
   {
     id: "sensitive",
@@ -53,7 +68,8 @@ export const SKIN_TYPES: SkinType[] = [
     shortDescription: "刺激に弱く赤みやかゆみが出やすい肌",
     description:
       "外部刺激に反応しやすく、赤み・かゆみ・ヒリつきが出やすいタイプ。低刺激のスキンケアがおすすめです。",
-  }
+    imageUrl: SKIN_TYPE_IMAGES.sensitive,
+  },
 ];
 
 export const QUESTIONS: Question[] = [

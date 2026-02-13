@@ -1,40 +1,25 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import Image from "next/image";
 
 export function EventFlyer() {
   return (
-    <section className="px-4 py-12 bg-skin-muted/30">
-      <div className="max-w-lg mx-auto">
-        <h2 className="text-lg font-semibold text-skin-foreground mb-4 text-center">
+    <section className="px-4 py-16 bg-skin-muted/20">
+      <div className="max-w-2xl mx-auto">
+        <p className="font-serif text-xs tracking-[0.2em] text-skin-muted uppercase mb-2 text-center">
+          体験会のご案内
+        </p>
+        <h2 className="font-serif text-xl text-skin-foreground mb-8 text-center">
           スキンケア体験会
         </h2>
-        <Card className="border-skin-border bg-skin-card overflow-hidden">
-          <CardHeader className="bg-skin-primary/10">
-            <p className="text-sm font-medium text-skin-muted">
-              あなたの肌タイプに合わせたケアを体験
-            </p>
-            <h3 className="text-xl font-bold text-skin-foreground">
-              無料スキンケア体験会
-            </h3>
-          </CardHeader>
-          <CardContent className="pt-4 space-y-3 text-sm text-skin-foreground/90">
-            <p>
-              <strong>内容：</strong>
-              プロのアドバイス付きスキンケア体験・お肌の相談
-            </p>
-            <p>
-              <strong>日時：</strong>
-              体験会の日時は申込後にご案内します
-            </p>
-            <p>
-              <strong>場所：</strong>
-              詳細は申込後にご案内します
-            </p>
-            <p>
-              <strong>特典：</strong>
-              診断結果に合わせたサンプルプレゼント
-            </p>
-          </CardContent>
-        </Card>
+        <div className="relative w-full overflow-hidden rounded-xl shadow-md bg-skin-card">
+          <Image
+            src="/images/flyer.png"
+            alt="スキンケア体験会（ビューティー体験会）のご案内"
+            width={672}
+            height={896}
+            className="w-full h-auto block"
+            sizes="(max-width: 672px) 100vw, 672px"
+          />
+        </div>
       </div>
     </section>
   );
