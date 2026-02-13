@@ -15,7 +15,9 @@ const geistMono = Geist_Mono({
 const notoSerifJP = Noto_Serif_JP({
   variable: "--font-serif-jp",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600"],
+  display: "optional",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -30,10 +32,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${notoSerifJP.variable} font-sans antialiased`}
-      >
+    <html
+      lang="ja"
+      className={`${geistSans.variable} ${geistMono.variable} ${notoSerifJP.variable}`}
+    >
+      <body className="font-sans antialiased">
         {children}
       </body>
     </html>
