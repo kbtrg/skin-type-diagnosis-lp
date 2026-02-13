@@ -73,6 +73,9 @@ src/
 - **状態管理**: 現状は `DiagnosisLp` 内の `useState` でステップ・回答・結果を保持（追加ライブラリなし）
 - **フォームバリデーション**: 必須項目はHTMLの `required` に依存。将来API連携時にクライアント/サーバー両方でバリデーションを検討
 - **イベント情報**: 日時・会場などは `EventFlyer` や関連コンポーネントにハードコードされている想定。変更頻度が高い場合は `src/data/` などに切り出すとよい
+- **フォント（本番・iPhone での遅延表示対策）**:
+  - 静的エクスポートでは next/font の CSS 変数が別チャンクで遅れて注入されることがあり、`--font-serif-jp` 未定義の間は文字が遅れて表示される問題がある
+  - 対策: `globals.css` の `--font-serif` で `var(--font-serif-jp, "Hiragino Mincho ProN")` のように **var() の第2引数でフォールバック**を指定し、変数未定義時もシステムフォントで即表示する。あわせて next/font は `display: "swap"` と `fallback` を指定している
 
 ---
 

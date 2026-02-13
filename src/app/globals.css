@@ -17,8 +17,9 @@
   --color-skin-accent: var(--skin-accent);
   --color-skin-brand: var(--skin-brand);
   --color-skin-brand-muted: var(--skin-brand-muted);
-  --font-sans: var(--font-geist-sans), sans-serif;
-  --font-serif: var(--font-serif-jp), "Hiragino Mincho ProN", "Yu Mincho", serif;
+  /* 変数未定義時（フォントCSS遅延ロード時）も即表示するため、第2引数でフォールバックを指定 */
+  --font-sans: var(--font-geist-sans, sans-serif);
+  --font-serif: var(--font-serif-jp, "Hiragino Mincho ProN"), "Yu Mincho", serif;
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);

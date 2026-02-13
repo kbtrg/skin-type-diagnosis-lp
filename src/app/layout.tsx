@@ -16,8 +16,9 @@ const notoSerifJP = Noto_Serif_JP({
   variable: "--font-serif-jp",
   subsets: ["latin"],
   weight: ["400", "600"],
-  display: "optional",
+  display: "swap",
   preload: true,
+  fallback: ["Hiragino Mincho ProN", "Yu Mincho", "serif"],
 });
 
 export const metadata: Metadata = {
