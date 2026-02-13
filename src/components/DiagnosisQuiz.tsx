@@ -9,12 +9,14 @@ interface DiagnosisQuizProps {
   currentIndex: number;
   answers: Record<number, Choice>;
   onAnswer: (questionId: number, choice: Choice) => void;
+  onBack?: () => void;
 }
 
 export function DiagnosisQuiz({
   currentIndex,
   answers,
   onAnswer,
+  onBack,
 }: DiagnosisQuizProps) {
   const question = QUESTIONS[currentIndex];
   if (!question) return null;
@@ -24,9 +26,24 @@ export function DiagnosisQuiz({
   return (
     <section className="min-h-[80vh] flex flex-col justify-center px-4 py-16">
       <div className="w-full max-w-xl mx-auto">
-        <p className="font-serif text-xs tracking-[0.15em] text-skin-muted uppercase mb-3">
-          質問 {currentIndex + 1} / {QUESTIONS.length}
-        </p>
+        <div className="flex items-center justify-between gap-4 mb-3">
+          {onBack ? (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={onBack}
+              className="text-skin-muted hover:text-skin-foreground hover:bg-skin-accent shrink-0"
+            >
+              ← 戻る
+            </Button>
+          ) : (
+            <span />
+          )}
+          <p className="font-serif text-xs tracking-[0.15em] text-skin-muted uppercase">
+            質問 {currentIndex + 1} / {QUESTIONS.length}
+          </p>
+        </div>
         <div className="h-1 bg-skin-border rounded-full overflow-hidden mb-10">
           <div
             className="h-full bg-skin-brand rounded-full transition-all duration-500 ease-out"

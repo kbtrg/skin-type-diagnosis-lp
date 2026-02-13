@@ -47,6 +47,16 @@ export function DiagnosisLp() {
     setResultType(null);
   }, []);
 
+  const handleQuizBack = useCallback(() => {
+    if (quizIndex <= 0) {
+      setStep("hero");
+      setQuizIndex(0);
+      setAnswers({});
+    } else {
+      setQuizIndex((i) => i - 1);
+    }
+  }, [quizIndex]);
+
   if (step === "complete") {
     return (
       <main className="min-h-screen bg-skin-background">
@@ -70,6 +80,7 @@ export function DiagnosisLp() {
           currentIndex={quizIndex}
           answers={answers}
           onAnswer={handleAnswer}
+          onBack={handleQuizBack}
         />
       </main>
     );
